@@ -1,6 +1,6 @@
 Angular-Friends
 ==============
-
+##Plan: Complete up to Black Diamond, then Extremify
 
 ##Objectives
 Learn Basic Angular Concepts by creating a searchable, filterable list of friends
