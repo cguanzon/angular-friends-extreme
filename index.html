@@ -25,13 +25,8 @@
 
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
-
-  <input ng-model="searchTerm" class="form-control" placeholder="Search Anything About Your Friends" >
-  <!-- The stuff below is For step 5....get rid of the one above if you wish-->
-<!--    
-    <input class="form-control" placeholder="Search Your Friends' Name" >
-    <input class="form-control" placeholder="Search Your Freinds' Location" > 
- -->
+    <input ng-model="searchTermName.name" class="form-control" placeholder="Search Your Friends' Name" >
+    <input ng-model="searchTermLocation.current_location" class="form-control" placeholder="Search Your Friends' Location" >
     <select class="input-medium">
         <option>Name</option>
         <option># friends</option>
@@ -46,16 +41,16 @@
   </div>
 </form>
 
-  <ul ng-repeat="friend in friends | filter:searchTerm">
+  <ul ng-repeat="friend in friends | filter:searchTermName | filter:searchTermLocation">
     <li class='friend'>
        <img class="profile-pic" src="http://lorempixel.com/30/30/people">
       <h3>{{friend.name}}</h3>
       <div class="location">
-        Location: {{friend.city}}, {{friend.state}}, {{friend.country}}
+        Location: {{friend.current_location.city}}, {{friend.current_location.state}}, {{friend.current_location.country}}
       </div>      
       <div class="status">
         <p>{{friend.status.message}}</p>
-        <p class="num-friends">at {{friend.status.time | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+        <p class="num-friends">Time: {{friend.status.time | date:"MM/dd/yyyy 'at' h:mma"}}</p>
       </div>      
       <div class="num-friends">
         Friends: {{friend.friend_count}}

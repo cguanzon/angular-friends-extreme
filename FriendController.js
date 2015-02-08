@@ -2,7 +2,8 @@ var app = angular.module('AngularFriends');
 
 app.controller('FriendCtrl', function($scope, $http){
 
-    $scope.searchTerm = "";
+    $scope.searchTermName = "";
+    $scope.searchTermLocation = "";
 
 
 
