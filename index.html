@@ -27,12 +27,12 @@
   <div class="form-group">
     <input ng-model="searchTerm.name" class="form-control" placeholder="Search Your Friends' Name" >
     <input ng-model="searchTerm.current_location" class="form-control" placeholder="Search Your Friends' Location" >
-    <select ng-model="sortBy" class="input-medium">
-        <option value="name">Name</option>
-        <option value="friend_count"># friends</option>
-        <option value="current_location.city">City</option>
-        <option value="current_location.state">State</option>
-        <option value="current_location.country">Country</option>
+    <select ng-model="sortBy" ng-options="filter for filter in filterOpts" class="input-medium">
+        <!--<option value="name">Name</option>-->
+        <!--<option value="friend_count"># friends</option>-->
+        <!--<option value="current_location.city">City</option>-->
+        <!--<option value="current_location.state">State</option>-->
+        <!--<option value="current_location.country">Country</option>-->
     </select>
     <select ng-model="desc" class="input-medium">
         <option value="true">Descending</option>
