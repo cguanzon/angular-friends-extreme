@@ -1,9 +1,15 @@
 var app = angular.module('AngularFriends');
 
-app.controller('FriendCtrl', function($scope){
+app.controller('FriendCtrl', function($scope, $http){
 
-    $scope.test = 'Hello World';
+    $scope.searchTerm = "";
 
+
+
+    $http.get('friend-data.json')
+        .then(function(res){
+            $scope.friends = res.data;
+        });
 });
 
 

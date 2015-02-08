@@ -13,13 +13,12 @@
 
 
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Anguler Friends Extreme</title>
+<title>Angular Friends Extreme</title>
 </head>
 
 <body ng-controller="FriendCtrl">
 
 <h1>Your Angular friends just went extreme!</h1>
-<h2>{{test}}</h2>
 
 <div class="friends">
 
@@ -27,7 +26,7 @@
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
 
-  <input class="form-control" placeholder="Search Anything About Your Friends" >
+  <input ng-model="searchTerm" class="form-control" placeholder="Search Anything About Your Friends" >
   <!-- The stuff below is For step 5....get rid of the one above if you wish-->
 <!--    
     <input class="form-control" placeholder="Search Your Friends' Name" >
@@ -47,18 +46,19 @@
   </div>
 </form>
 
-  <ul>
+  <ul ng-repeat="friend in friends | filter:searchTerm">
     <li class='friend'>
-       <img class="profile-pic" src='https://scontent-a.xx.fbcdn.net/hprofile-ash3/833_10200838803828124_1233160321_a.jpg'>
-      <h3>Cali Fornia</h3>
+       <img class="profile-pic" src="http://lorempixel.com/30/30/people">
+      <h3>{{friend.name}}</h3>
       <div class="location">
-        Location: New Port Beach, California, United States
+        Location: {{friend.city}}, {{friend.state}}, {{friend.country}}
       </div>      
       <div class="status">
-        Status: I hate the snow. I wish I was on the beach right now!!! <span class="hashtag">#ihateprovo</span>
+        <p>{{friend.status.message}}</p>
+        <p class="num-friends">at {{friend.status.time | date:"MM/dd/yyyy 'at' h:mma"}}</p>
       </div>      
       <div class="num-friends">
-        Friends: 1,367
+        Friends: {{friend.friend_count}}
       </div>
     </li>
   </ul>
