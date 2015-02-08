@@ -25,23 +25,23 @@
 
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
-    <input ng-model="searchTermName.name" class="form-control" placeholder="Search Your Friends' Name" >
-    <input ng-model="searchTermLocation.current_location" class="form-control" placeholder="Search Your Friends' Location" >
-    <select class="input-medium">
-        <option>Name</option>
-        <option># friends</option>
-        <option>City</option>
-        <option>State</option>
-        <option>Country</option>
+    <input ng-model="searchTerm.name" class="form-control" placeholder="Search Your Friends' Name" >
+    <input ng-model="searchTerm.current_location" class="form-control" placeholder="Search Your Friends' Location" >
+    <select ng-model="sortBy" class="input-medium">
+        <option value="name">Name</option>
+        <option value="friend_count"># friends</option>
+        <option value="current_location.city">City</option>
+        <option value="current_location.state">State</option>
+        <option value="current_location.country">Country</option>
     </select>
-    <select class="input-medium">
-        <option value="false">Descending</option>
-        <option value="true">Ascending</option>
+    <select ng-model="desc" class="input-medium">
+        <option value="true">Descending</option>
+        <option value="false">Ascending</option>
     </select>
   </div>
 </form>
 
-  <ul ng-repeat="friend in friends | filter:searchTermName | filter:searchTermLocation">
+  <ul ng-repeat="friend in friends | filter:searchTerm | orderBy:sortBy:desc">
     <li class='friend'>
        <img class="profile-pic" src="http://lorempixel.com/30/30/people">
       <h3>{{friend.name}}</h3>
