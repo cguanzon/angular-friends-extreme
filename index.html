@@ -22,17 +22,11 @@
 
 <div class="friends">
 
-
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
     <input ng-model="searchTerm.name" class="form-control" placeholder="Search Your Friends' Name" >
     <input ng-model="searchTerm.current_location" class="form-control" placeholder="Search Your Friends' Location" >
-    <select ng-model="sortBy" ng-options="filter for filter in filterOpts" class="input-medium">
-        <!--<option value="name">Name</option>-->
-        <!--<option value="friend_count"># friends</option>-->
-        <!--<option value="current_location.city">City</option>-->
-        <!--<option value="current_location.state">State</option>-->
-        <!--<option value="current_location.country">Country</option>-->
+    <select ng-model="sortBy" ng-options="val as key for (key, val) in filterOpts" class="input-medium">
     </select>
     <select ng-model="desc" class="input-medium">
         <option value="true">Descending</option>
@@ -45,10 +39,10 @@
     <li class='friend'>
        <img class="profile-pic" src="http://lorempixel.com/30/30/people">
       <h3>{{friend.name}}</h3>
-      <div class="location">
+      <div class="location" ng-show="friend.current_location">
         Location: {{friend.current_location.city}}, {{friend.current_location.state}}, {{friend.current_location.country}}
       </div>      
-      <div class="status">
+      <div class="status" ng-settings="friend.status">
         <p>{{friend.status.message}}</p>
         <p class="num-friends">Time: {{friend.status.time | date:"MM/dd/yyyy 'at' h:mma"}}</p>
       </div>      
@@ -58,11 +52,6 @@
     </li>
   </ul>
 </div>
-
-
-
-
-
 
 </body>
 </html>

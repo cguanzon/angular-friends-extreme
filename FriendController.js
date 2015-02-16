@@ -3,11 +3,15 @@ var app = angular.module('AngularFriends');
 app.controller('FriendCtrl', function($scope, $http){
 
     $scope.searchTermName = {};
-    $scope.sortBy = "name";
     $scope.desc = "false"
 
-    $scope.filterOpts = ["name", "friend_count", "current_location.city",
-        "current_location.state", "current_location.country"];
+    $scope.filterOpts = {
+        'Name': 'name',
+        '# friends': 'friend_count',
+        'City': 'current_location.city',
+        'State': 'current_location.state',
+        'Country': 'current_location.country'
+    };
 
     $http.get('friend-data.json')
         .then(function(res){
